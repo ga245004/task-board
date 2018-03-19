@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">New Task</h3>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="row">
+            <input type="text" style="width: 100%;" ng-model="newTask.summary" placeholder="Summary" required>
+        </div>
+        <div class="row">
+            <textarea required style="width: 100%; 
+                        height: 150px;" ng-model="newTask.content" placeholder="Description of Task. markdown is supported e.g ##Task Title"></textarea>
+        </div>
+        <div class="row">
+            <div style="width: 100%;
+                        height: 150px; overflow:auto" ng-bind-html="newTask.content | markdown"></div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

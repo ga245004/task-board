@@ -1,3 +1,10 @@
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+    cursor: pointer;
+}
+
 body {
     background: black;
     margin: 0px;
@@ -118,4 +125,11 @@ body {
 .column-content ul[dnd-list] li.selected {
     background-color: #dff0d8;
     color: #3c763d;
+}
+
+@media (min-width: 576px) {
+    .add-task-modal .modal-dialog {
+        max-width: 80%;
+        margin: 1.75rem auto;
+    }
 }

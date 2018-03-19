@@ -14,7 +14,7 @@ function getRandomTask(totalTask, columns) {
     for (var i = 1; i <= totalTask; i++) {
         tasks.push({
             id: i,
-            content: "<b>Task</b>" + i,
+            summary: "<b>Task</b>" + i,
             status: Math.floor((Math.random() * columns))
         })
     }
