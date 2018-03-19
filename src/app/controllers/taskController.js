@@ -26,7 +26,7 @@ app
 
         $scope.taskChange = function (status, task) {
             var oldTask = _.filter($scope.tasks, task);
-            console.log(oldTask);
+            
             if (oldTask.length > 0) {
                 oldTask[0].status = status;
             }

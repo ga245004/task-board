@@ -13,7 +13,7 @@ app
                         if (e.preventDefault) {
                             e.preventDefault(); // Necessary. Allows us to drop.
                         }
-
+                        e.dataTransfer = e.originalEvent.dataTransfer;
                         e.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
                         return false;
                     });
@@ -39,10 +39,10 @@ app
                     if (e.stopPropagation) {
                         e.stopPropagation(); // Necessary. Allows us to drop.
                     }
+                    e.dataTransfer = e.originalEvent.dataTransfer;
                     var data = e
                         .dataTransfer
                         .getData("task");
-                    console.log('drop', JSON.parse(data));
 
                     scope.onDrop({
                         task: JSON.parse(data)

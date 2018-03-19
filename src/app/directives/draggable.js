@@ -12,7 +12,7 @@ app
                     .attr('draggable', 'true');
 
                 element.bind("dragstart", function (e) {
-                    console.log('dragstart', scope.taskDrag)
+                    e.dataTransfer = e.originalEvent.dataTransfer;
                     e
                         .dataTransfer
                         .setData('task', JSON.stringify(scope.taskDrag));
