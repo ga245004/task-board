@@ -1,9 +1,9 @@
 app
-    .directive("taskDrag", function () {
+    .directive("drag", function () {
         return {
             restrict: "A",
             scope: {
-                taskDrag: '=',
+                dragData: '=',
                 drag: '&'
             },
             link: function (scope, element, attrs) {
@@ -15,11 +15,11 @@ app
                     e.dataTransfer = e.originalEvent.dataTransfer;
                     e
                         .dataTransfer
-                        .setData('task', JSON.stringify(scope.taskDrag));
+                        .setData('dragData', JSON.stringify(scope.dragData));
                 });
 
                 element.bind("dragend", function (e) {
-                    console.log('dragend', scope.taskDrag)
+                    console.log('dragend', scope.dragData)
                 });
             },
             controller: function ($scope) {}

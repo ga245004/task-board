@@ -4,8 +4,7 @@
 
 <div class="column-content">
     <ul class="content">
-        <li ng-include="'app/templates/task.html'" ng-repeat="task in tasks | filterTasks: $index" class="task" task-drag="task"
-            drag="drag">
+        <li ng-include="'app/templates/task.html'" ng-repeat="task in tasks | filterTasks: $index" class="task" drag="true" drag-data="task">
         </li>
     </ul>
 </div>

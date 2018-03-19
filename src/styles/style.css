@@ -133,3 +133,7 @@ body {
         margin: 1.75rem auto;
     }
 }
+
+.drag-over {
+    background-color: #006a9c;
+}

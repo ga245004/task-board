@@ -4,8 +4,8 @@
             <i class="fas fa-plus"></i>
         </button>
     </div>
-    <div class="column" ng-repeat="column in boardColumns" ng-include="'app/templates/column.html'" task-drop column="column"
-        on-drop="taskChange($index, task)">
+    <div class="column" ng-repeat="column in boardColumns" ng-include="'app/templates/column.html'" drop-data="column" drop="true"
+        on-drop="taskChange($index, dragData, dropData)">
 
     </div>
 </div>

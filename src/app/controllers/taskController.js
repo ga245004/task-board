@@ -24,9 +24,10 @@ app
                 .push(task);
         }
 
-        $scope.taskChange = function (status, task) {
-            var oldTask = _.filter($scope.tasks, task);
-            
+        $scope.taskChange = function (status, dragData, dropData) {
+            console.log(status, dragData, dropData)
+            var oldTask = _.filter($scope.tasks, dragData);
+
             if (oldTask.length > 0) {
                 oldTask[0].status = status;
             }
