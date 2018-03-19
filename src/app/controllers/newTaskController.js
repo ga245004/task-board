@@ -6,7 +6,7 @@ app
             status: 0
         };
 
-        $scope.ok = function () {
+        $scope.add = function () {
             $uibModalInstance.close($scope.newTask);
         };
 
