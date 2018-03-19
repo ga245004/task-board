@@ -1,7 +1,7 @@
 app
     .controller('taskController', function ($scope, taskService, $uibModal, $log, markdownService) {
         $scope.boardColumns = ["ToDo", "In Progress", "Completed"]
-        $scope.tasks = taskService.get();
+        $scope.tasks = taskService.get($scope.boardColumns);
         $scope.addTask = function () {
 
             var modalInstance = $uibModal.open({animation: $scope.animation, templateUrl: 'app/templates/new-task.html', controller: 'newTaskController', windowClass: 'add-task-modal'});

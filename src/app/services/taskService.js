@@ -1,7 +1,7 @@
 app
     .service('taskService', function () {
-        this.get = function () {
-            return getRandomTask(25, 3);
+        this.get = function (columns) {
+            return getRandomTask(25, columns.length);
         }
 
         this.add = function (task) {
