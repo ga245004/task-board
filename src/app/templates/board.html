@@ -1,0 +1,11 @@
+<div class="board">
+    <div>
+        <button class="btn btn-primary column-footer-action" ng-click="addTask()" title="Add new Task">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <div class="column" ng-repeat="column in boardColumns" ng-include="'app/templates/column.html'" task-drop column="column"
+        on-drop="taskChange($index, task)">
+
+    </div>
+</div>

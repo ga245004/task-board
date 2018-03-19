@@ -6,56 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Task Board</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://rawgit.com/jkuri/ngSlimscroll/master/src/js/min/ngSlimscroll.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link href="styles/style.css" rel="stylesheet" type="text/css" media="all">
 
-    <link href="style.css" rel="stylesheet" type="text/css" media="all">
-</head>
 
-<body ng-controller="taskController">
-    <div class="board">
-        <div class="column" ng-repeat="column in boardColumns">
-            <div class="column-header">
-                <h2>{{column}}</h2>
-            </div>
-            <div class="column-content" ng-slimscroll>
-                <div class="content" draggable="true" ng-repeat="task in tasks[column]">
-                    Task {{task}}
-                </div>
-            </div>
-            <div class="column-footer">
-                <button class="btn btn-primary column-footer-action" ng-click="addTask(column)">Add</button>
-            </div>
-        </div>
-    </div>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.js"></script>
+    <script src="https://rawgit.com/jkuri/ngSlimscroll/master/src/js/min/ngSlimscroll.js"></script>
+    <script src="https://rawgit.com/marceljuenemann/angular-drag-and-drop-lists/master/angular-drag-and-drop-lists.min.js"></script>
 
-<script>
-    var app = angular.module('app', ['jkuri.slimscroll']);
-    app.controller('taskController', function ($scope) {
-        $scope.boardColumns = ["ToDo", "In Progress", "Completed"]
-        $scope.tasks = {
-            "ToDo": ["1", "2", "3", "4", "5"],
-            "In Progress": ["6"],
-            "Completed": ["7", "8"],
-            TotalTask: 8
-        };
-        $scope.lastName = "Doe";
 
-        $scope.addTask = function (column) {
-            var tasks = $scope.tasks[column];
-            $scope.tasks.TotalTask = $scope.tasks.TotalTask + 1;
 
-            tasks.push($scope.tasks.TotalTask)
-        }
-    });
+    <body ng-controller="taskController" ng-include="'app/templates/board.html'">
 
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-</script>
+    </body>
+
+    <script src="app/app.js"></script>
+    <script src="app/filters/filterTasks.js"></script>
+    <script src="app/services/taskService.js"></script>
+    <script src="app/directives/draggable.js"></script>
+    <script src="app/directives/dropable.js"></script>
+    <script src="app/controllers/taskController.js"></script>
+
 
 
 </html>
