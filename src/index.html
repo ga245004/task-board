@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task Board</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://rawgit.com/jkuri/ngSlimscroll/master/src/js/min/ngSlimscroll.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body ng-controller="taskController">
+    <div class="board">
+        <div class="column" ng-repeat="column in boardColumns">
+            <div class="column-header">
+                <h2>{{column}}</h2>
+            </div>
+            <div class="column-content" ng-slimscroll>
+                <div class="content" draggable="true" ng-repeat="task in tasks[column]">
+                    Task {{task}}
+                </div>
+            </div>
+            <div class="column-footer">
+                <button class="btn btn-primary column-footer-action" ng-click="addTask(column)">Add</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = angular.module('app', ['jkuri.slimscroll']);
+    app.controller('taskController', function ($scope) {
+        $scope.boardColumns = ["ToDo", "In Progress", "Completed"]
+        $scope.tasks = {
+            "ToDo": ["1", "2", "3", "4", "5"],
+            "In Progress": ["6"],
+            "Completed": ["7", "8"],
+            TotalTask: 8
+        };
+        $scope.lastName = "Doe";
+
+        $scope.addTask = function (column) {
+            var tasks = $scope.tasks[column];
+            $scope.tasks.TotalTask = $scope.tasks.TotalTask + 1;
+
+            tasks.push($scope.tasks.TotalTask)
+        }
+    });
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+</script>
+
+
+</html>
