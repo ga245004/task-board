@@ -1,10 +1,24 @@
 app
-    .service('taskService', function () {
+    .service('taskService', function ($localStorage) {
         this.get = function (columns) {
-            return getRandomTask(25, columns.length);
+            if (!$localStorage.taskList) {
+                $localStorage.taskList = [];
+            }
+
+            return $localStorage
+                .taskList
+                .concat(getRandomTask(25, columns.length));
         }
 
         this.add = function (task) {
+            if (!$localStorage.taskList) {
+                $localStorage.taskList = [];
+            }
+
+            $localStorage
+                .taskList
+                .push(task);
+
             return task;
         }
     });

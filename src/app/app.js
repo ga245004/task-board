@@ -1,1 +1,1 @@
-var app = angular.module('app', ['ngSanitize', 'ui.bootstrap', 'jkuri.slimscroll']);
+var app = angular.module('app', ['ngSanitize', 'ui.bootstrap', 'jkuri.slimscroll', 'ngStorage']);
