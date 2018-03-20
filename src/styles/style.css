@@ -10,6 +10,7 @@ body {
     margin: 0px;
     padding: 0px;
     user-select: none;
+    overflow: hidden;
 }
 
 .board {
@@ -28,6 +29,9 @@ body {
 .column .column-header {
     text-align: center;
     border-bottom: 1px solid #d8d8d8;
+    background-color: #000000bf;
+    color: white;
+    height: 50px;
 }
 
 .board .board-footer {
