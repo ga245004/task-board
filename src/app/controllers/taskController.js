@@ -1,22 +1,54 @@
 app
     .controller('taskController', function ($scope, taskService, $uibModal, $log, markdownService) {
-        $scope.boardColumns = ["ToDo", "In Progress", "Completed"]
+        $scope.boardColumns = ["ToDo", "In Progress", "Completed", "Verified"]
         $scope.tasks = taskService.get($scope.boardColumns);
-        $scope.addTask = function () {
+        $scope.newTaskModalTempalate = {
+            animation: $scope.animation,
+            templateUrl: 'app/templates/task/new-task.html',
+            controller: 'newTaskController',
+            windowClass: 'add-task-modal',
+            backdrop: 'static'
+        }
 
-            var modalInstance = $uibModal.open({animation: $scope.animation, templateUrl: 'app/templates/new-task.html', controller: 'newTaskController', windowClass: 'add-task-modal'});
+        $scope.viewTaskModalTemplate = {
+            animation: $scope.animation,
+            templateUrl: 'app/templates/task/view-task.html',
+            controller: 'viewTaskController',
+            windowClass: 'view-task-modal',
+            backdrop: 'static',
+            resolve: {
+                task: function () {
+                    return $scope.selectedTask;
+                }
+            }
+        }
+
+        $scope.addTaskModal = function () {
+            var modalInstance = $uibModal.open($scope.newTaskModalTempalate);
             modalInstance
                 .result
-                .then(function (newTask) {
-                    $log.info(newTask);
-                    $scope.AddNewTask(newTask)
-                }, function () {
+                .then($scope.AddNewTask, function () {
                     $log.info('Modal dismissed at: ' + new Date());
                 });
+        }
 
+        $scope.viewTaskModal = function (task) {
+            $scope.selectedTask = task;
+            var modalInstance = $uibModal.open($scope.viewTaskModalTemplate);
+
+            modalInstance
+                .result
+                .then(function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                    $scope.selectedTask = null;
+                }, function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                    $scope.selectedTask = null;
+                });
         }
 
         $scope.AddNewTask = function (newTask) {
+            $log.info(newTask);
             var task = taskService.add(newTask);
             task.id = $scope.tasks.length;
             $scope

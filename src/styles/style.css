@@ -137,3 +137,18 @@ body {
 .drag-over {
     background-color: #006a9c;
 }
+
+.task-action {
+    float: right;
+    margin-top: -30px;
+    margin-right: -15px;
+}
+
+.task-action button {
+    width: 21px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    line-height: 0px;
+}

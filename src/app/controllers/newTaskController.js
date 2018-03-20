@@ -1,9 +1,9 @@
 app
     .controller('newTaskController', function ($scope, $uibModalInstance) {
         $scope.newTask = {
+            status: 0,
             summary: '',
-            content: '#New Task',
-            status: 0
+            content: '##New Task'
         };
 
         $scope.add = function () {
