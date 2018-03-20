@@ -1,0 +1,10 @@
+<div class="modal-header" ng-bind-html="dialog.header | markdown">
+
+</div>
+<div class="modal-body" ng-bind-html="dialog.body | markdown">
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn" data-ng-click="dialog.nofn()">{{dialog.noButton ? dialog.noButton : 'No'}}</button>
+    <button class="btn btn-primary" data-ng-click="dialog.yesfn();">{{dialog.yesButton ? dialog.yesButton : 'Yes'}}</button>
+</div>

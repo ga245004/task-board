@@ -72,6 +72,7 @@ body {
     cursor: move;
     width: 100%;
     word-break: break-all;
+    position: relative;
 }
 
 .task:hover {
@@ -143,9 +144,10 @@ body {
 }
 
 .task-action {
-    float: right;
-    margin-top: -30px;
-    margin-right: -15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
 }
 
 .task-action button {

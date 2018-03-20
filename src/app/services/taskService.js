@@ -21,6 +21,20 @@ app
 
             return task;
         }
+
+        this.delete = function (task) {
+            var taskId = $localStorage
+                .taskList
+                .indexOf(task);
+
+            if (taskId > -1) {
+                $localStorage
+                    .taskList
+                    .splice(taskId, 1);
+            }
+
+            return taskId;
+        }
     });
 
 function getRandomTask(totalTask, columns) {

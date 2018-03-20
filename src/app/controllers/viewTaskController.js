@@ -1,5 +1,5 @@
 app
-    .controller('viewTaskController', function ($scope, $uibModalInstance, task) {
+    .controller('viewTaskController', function ($scope, $log, $uibModalInstance, task) {
         $scope.task = task;
         $scope.edit = function () {
             $uibModalInstance.close(true);
@@ -8,4 +8,5 @@ app
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
+
     });

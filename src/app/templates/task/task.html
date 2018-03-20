@@ -1,7 +1,10 @@
-<div ng-mouseenter="showAction = true" ng-mouseleave="showAction = false    ">
+<div ng-mouseenter="showAction = true" ng-mouseleave="showAction = false">
     <div ng-bind-html="task.summary | markdown">
     </div>
     <div class="task-action" ng-show="showAction">
+        <button ng-click="editTaskModal(task)">
+            <i class="fas fa-edit"></i>
+        </button>
         <button ng-click="viewTaskModal(task)">
             <i class="fas fa-eye"></i>
         </button>
