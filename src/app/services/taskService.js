@@ -7,7 +7,7 @@ app
 
             return $localStorage
                 .taskList
-                .concat(getRandomTask(25, columns.length));
+                .concat(getRandomTask(0, columns.length));
         }
 
         this.add = function (task) {
